@@ -1,5 +1,8 @@
 .container {
-  padding: 25px; }
+  padding: 25px;
+  display: grid;
+  grid-template-columns: 50%;
+  justify-content: center; }
 
 .list-non-styled {
   list-style-type: none;
@@ -7,12 +10,32 @@
   margin: 0px 0px 0px 0px;
   border: 1px solid white; }
   .list-non-styled li {
-    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     border-bottom: 1px solid white; }
+    .list-non-styled li div:first-child {
+      padding-left: 20px; }
+    .list-non-styled li div:last-child {
+      justify-self: right; }
+    .list-non-styled li input {
+      height: 100%;
+      border: none;
+      border-left: 1px solid white;
+      transition: .5s;
+      padding-left: 15px;
+      padding-right: 15px; }
   .list-non-styled li:nth-child(2n) {
     background-color: #ff7676; }
+    .list-non-styled li:nth-child(2n) input {
+      background-color: #ff7676; }
+      .list-non-styled li:nth-child(2n) input:hover {
+        background-color: #ff2a2a; }
   .list-non-styled li:nth-child(2n+1) {
     background-color: #8f76ff; }
+    .list-non-styled li:nth-child(2n+1) input {
+      background-color: #8f76ff; }
+      .list-non-styled li:nth-child(2n+1) input:hover {
+        background-color: #502aff; }
   .list-non-styled li:last-child {
     border-bottom: none; }
 

@@ -6,6 +6,9 @@ $border1px: 1px solid $borderColor;
 
 .container {
     padding: 25px;
+    display: grid;
+    grid-template-columns: 50%;
+    justify-content: center;
 }
 
 .list-non-styled {
@@ -15,16 +18,50 @@ $border1px: 1px solid $borderColor;
     border: $border1px;
     
     li {
-        padding: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         border-bottom: $border1px;
+
+        div:first-child {
+            padding-left: 20px;
+        }
+
+        div:last-child {
+            justify-self: right;
+        }
+
+        input {
+            height: 100%;
+            border: none;
+            border-left: 1px solid $borderColor;
+            transition: .5s;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
     }
 
     li:nth-child(2n) {
         background-color: $firstColor;
+
+        input {
+            background-color: $firstColor;
+
+            &:hover {
+                background-color: darken($color: $firstColor, $amount: 15);
+            }
+        }
     }
 
     li:nth-child(2n+1) {
         background-color: $secondColor;
+
+        input {
+            background-color: $secondColor;
+
+            &:hover {
+                background-color: darken($color: $secondColor, $amount: 15);
+            }
+        }
     }
 
     li:last-child {

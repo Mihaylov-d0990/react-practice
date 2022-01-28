@@ -3,8 +3,13 @@ import './style/style.css'
 
 function App() {
     return (
-        <div>
+        <div className='container'>
+            <div>
             <ToDoList/>
+            </div>
+            <div>
+                
+            </div>
         </div>
     );
 }
