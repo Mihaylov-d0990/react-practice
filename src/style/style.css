@@ -4,12 +4,19 @@
 .list-non-styled {
   list-style-type: none;
   padding-left: 0px;
-  margin: 0px 0px 0px 0px; }
+  margin: 0px 0px 0px 0px;
+  border: 1px solid white; }
   .list-non-styled li {
-    padding: 10px; }
+    padding: 10px;
+    border-bottom: 1px solid white; }
   .list-non-styled li:nth-child(2n) {
     background-color: #ff7676; }
   .list-non-styled li:nth-child(2n+1) {
     background-color: #8f76ff; }
+  .list-non-styled li:last-child {
+    border-bottom: none; }
+
+.padding-top-25 {
+  padding-top: 25px; }
 
 /*# sourceMappingURL=style.css.map */

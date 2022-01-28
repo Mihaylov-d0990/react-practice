@@ -1,3 +1,9 @@
+$firstColor: rgb(255, 118, 118);
+$secondColor: rgb(143, 118, 255);
+$borderColor: rgb(255, 255, 255);
+
+$border1px: 1px solid $borderColor;
+
 .container {
     padding: 25px;
 }
@@ -6,19 +12,28 @@
     list-style-type: none;
     padding-left: 0px;
     margin: 0px 0px 0px 0px;
+    border: $border1px;
     
     li {
         padding: 10px;
+        border-bottom: $border1px;
     }
 
-    li:nth-child(2n){
-        background-color: rgb(255, 118, 118);
+    li:nth-child(2n) {
+        background-color: $firstColor;
     }
 
-    li:nth-child(2n+1){
-        background-color: rgb(143, 118, 255);
+    li:nth-child(2n+1) {
+        background-color: $secondColor;
     }
 
+    li:last-child {
+        border-bottom: none;
+    }
+}
+
+.padding-top-25 {
+    padding-top: 25px;
 }
 
 
