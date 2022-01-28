@@ -1,14 +1,14 @@
 import ToDoList from "./todolist/ToDoList";
+import Calculator from "./calculator/Calculator";
+import './style/style.css' 
 
 
 function App() {
     return (
         <div className='container'>
             <div>
-            <ToDoList/>
-            </div>
-            <div>
-                
+                {false && <ToDoList />}
+                <Calculator />
             </div>
         </div>
     );

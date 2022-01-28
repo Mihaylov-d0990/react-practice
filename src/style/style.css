@@ -1,0 +1,56 @@
+.container {
+  padding: 25px;
+  display: grid;
+  grid-template-columns: 50%;
+  justify-content: center; }
+
+.todolist .list-non-styled {
+  list-style-type: none;
+  padding-left: 0px;
+  margin: 0px 0px 0px 0px;
+  border: 1px solid white; }
+  .todolist .list-non-styled li {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid white; }
+    .todolist .list-non-styled li div:first-child {
+      padding-left: 20px; }
+    .todolist .list-non-styled li div:last-child {
+      justify-self: right; }
+    .todolist .list-non-styled li input {
+      height: 100%;
+      border: none;
+      border-left: 1px solid white;
+      transition: .5s;
+      padding-left: 15px;
+      padding-right: 15px; }
+    .todolist .list-non-styled li:nth-child(2n) {
+      background-color: #ff7676; }
+      .todolist .list-non-styled li:nth-child(2n) input {
+        background-color: #ff7676; }
+        .todolist .list-non-styled li:nth-child(2n) input:hover {
+          background-color: #ff2a2a; }
+    .todolist .list-non-styled li:nth-child(2n+1) {
+      background-color: #8f76ff; }
+      .todolist .list-non-styled li:nth-child(2n+1) input {
+        background-color: #8f76ff; }
+        .todolist .list-non-styled li:nth-child(2n+1) input:hover {
+          background-color: #502aff; }
+    .todolist .list-non-styled li:last-child {
+      border-bottom: none; }
+.todolist .padding-top-25 {
+  padding-top: 25px; }
+
+.calculator .expression {
+  width: 100%;
+  height: 30px;
+  background-color: #ff7676;
+  display: grid;
+  align-content: center; }
+.calculator .calc-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr; }
+.calculator .calc-button {
+  background-color: #8f76ff; }
+
+/*# sourceMappingURL=style.css.map */

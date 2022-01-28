@@ -1,0 +1,101 @@
+$firstColor: rgb(255, 118, 118);
+$secondColor: rgb(143, 118, 255);
+$borderColor: rgb(255, 255, 255);
+
+$border1px: 1px solid $borderColor;
+
+.container {
+    padding: 25px;
+    display: grid;
+    grid-template-columns: 50%;
+    justify-content: center;
+}
+
+.todolist{
+    .list-non-styled {
+        list-style-type: none;
+        padding-left: 0px;
+        margin: 0px 0px 0px 0px;
+        border: $border1px;
+        
+        li {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: $border1px;
+    
+            div:first-child {
+                padding-left: 20px;
+            }
+    
+            div:last-child {
+                justify-self: right;
+            }
+    
+            input {
+                height: 100%;
+                border: none;
+                border-left: 1px solid $borderColor;
+                transition: .5s;
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+    
+            &:nth-child(2n) {
+                background-color: $firstColor;
+        
+                input {
+                    background-color: $firstColor;
+        
+                    &:hover {
+                        background-color: darken($color: $firstColor, $amount: 15);
+                    }
+                }
+            }
+    
+            &:nth-child(2n+1) {
+                background-color: $secondColor;
+        
+                input {
+                    background-color: $secondColor;
+        
+                    &:hover {
+                        background-color: darken($color: $secondColor, $amount: 15);
+                    }
+                }
+            }
+    
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    
+    }
+    
+    .padding-top-25 {
+        padding-top: 25px;
+    }
+}
+
+.calculator {
+    .expression {
+        width: 100%;
+        height: 30px;
+        background-color: $firstColor;
+        display: grid;
+        align-content: center;
+    }
+
+    .calc-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .calc-button {
+        background-color: $secondColor;
+    }
+}
+
+
+
+
+

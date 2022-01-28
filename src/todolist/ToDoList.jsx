@@ -1,5 +1,3 @@
-import './style/style.css'
-
 import React from 'react'
 import List from './List'
 
@@ -73,7 +71,7 @@ export default function ToDoList() {
     }, [errorMessage])
  
     return (
-        <div>
+        <div className='todolist'>
             <input type="text" placeholder="Enter your issue" value={inputIssue} onChange={issueChangeHandler}/>
             <input type="button" value="Add issue" onClick={addIssue}/>
             {errorMessage && <p>{errorMessage}</p>}
