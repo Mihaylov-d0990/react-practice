@@ -38,35 +38,36 @@ $border1px: 1px solid $borderColor;
             padding-left: 15px;
             padding-right: 15px;
         }
-    }
 
-    li:nth-child(2n) {
-        background-color: $firstColor;
-
-        input {
+        &:nth-child(2n) {
             background-color: $firstColor;
-
-            &:hover {
-                background-color: darken($color: $firstColor, $amount: 15);
+    
+            input {
+                background-color: $firstColor;
+    
+                &:hover {
+                    background-color: darken($color: $firstColor, $amount: 15);
+                }
             }
         }
-    }
 
-    li:nth-child(2n+1) {
-        background-color: $secondColor;
-
-        input {
+        &:nth-child(2n+1) {
             background-color: $secondColor;
-
-            &:hover {
-                background-color: darken($color: $secondColor, $amount: 15);
+    
+            input {
+                background-color: $secondColor;
+    
+                &:hover {
+                    background-color: darken($color: $secondColor, $amount: 15);
+                }
             }
+        }
+
+        &:last-child {
+            border-bottom: none;
         }
     }
 
-    li:last-child {
-        border-bottom: none;
-    }
 }
 
 .padding-top-25 {

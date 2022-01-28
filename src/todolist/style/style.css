@@ -24,20 +24,20 @@
       transition: .5s;
       padding-left: 15px;
       padding-right: 15px; }
-  .list-non-styled li:nth-child(2n) {
-    background-color: #ff7676; }
-    .list-non-styled li:nth-child(2n) input {
+    .list-non-styled li:nth-child(2n) {
       background-color: #ff7676; }
-      .list-non-styled li:nth-child(2n) input:hover {
-        background-color: #ff2a2a; }
-  .list-non-styled li:nth-child(2n+1) {
-    background-color: #8f76ff; }
-    .list-non-styled li:nth-child(2n+1) input {
+      .list-non-styled li:nth-child(2n) input {
+        background-color: #ff7676; }
+        .list-non-styled li:nth-child(2n) input:hover {
+          background-color: #ff2a2a; }
+    .list-non-styled li:nth-child(2n+1) {
       background-color: #8f76ff; }
-      .list-non-styled li:nth-child(2n+1) input:hover {
-        background-color: #502aff; }
-  .list-non-styled li:last-child {
-    border-bottom: none; }
+      .list-non-styled li:nth-child(2n+1) input {
+        background-color: #8f76ff; }
+        .list-non-styled li:nth-child(2n+1) input:hover {
+          background-color: #502aff; }
+    .list-non-styled li:last-child {
+      border-bottom: none; }
 
 .padding-top-25 {
   padding-top: 25px; }
