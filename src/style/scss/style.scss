@@ -1,0 +1,27 @@
+.container {
+    padding: 25px;
+}
+
+.list-non-styled {
+    list-style-type: none;
+    padding-left: 0px;
+    margin: 0px 0px 0px 0px;
+    
+    li {
+        padding: 10px;
+    }
+
+    li:nth-child(2n){
+        background-color: rgb(255, 118, 118);
+    }
+
+    li:nth-child(2n+1){
+        background-color: rgb(143, 118, 255);
+    }
+
+}
+
+
+
+
+
