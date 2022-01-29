@@ -1,5 +1,6 @@
 import ToDoList from "./todolist/ToDoList";
 import Calculator from "./calculator/Calculator";
+import TicTacToe from "./tictactoe/TicTacToe"
 import './style/style.css' 
 
 
@@ -8,7 +9,8 @@ function App() {
         <div className='container'>
             <div>
                 {false && <ToDoList />}
-                <Calculator />
+                {false && <Calculator />}
+                <TicTacToe />
             </div>
         </div>
     );

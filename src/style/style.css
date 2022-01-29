@@ -53,4 +53,11 @@
 .calculator .calc-button {
   background-color: #8f76ff; }
 
+.tictactoe .area {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px; }
+  .tictactoe .area .field {
+    background-color: #ff7676; }
+
 /*# sourceMappingURL=style.css.map */

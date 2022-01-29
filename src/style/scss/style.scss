@@ -77,6 +77,7 @@ $border1px: 1px solid $borderColor;
 }
 
 .calculator {
+
     .expression {
         width: 100%;
         height: 30px;
@@ -92,6 +93,19 @@ $border1px: 1px solid $borderColor;
 
     .calc-button {
         background-color: $secondColor;
+    }
+}
+
+.tictactoe {
+
+    .area {
+        display: grid;
+        grid-template-columns: 100px 100px 100px;
+        grid-template-rows: 100px 100px 100px;
+
+        .field {
+            background-color: $firstColor;
+        }
     }
 }
 
