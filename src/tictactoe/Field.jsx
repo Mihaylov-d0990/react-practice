@@ -1,8 +1,8 @@
 
 
-export default function Field({name, index, changeTurn}) {
+export default function Field({name, index, changeTurn, disabled}) {
 
     return (
-        <button className="field" onClick={() => (changeTurn(index))}>{name}</button>
+        <button className="field" disabled={disabled} onClick={() => (changeTurn(index))}>{name}</button>
     )
 }
