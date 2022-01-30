@@ -9,8 +9,8 @@ function App() {
         <div className='container'>
             <div>
                 {false && <ToDoList />}
-                {false && <Calculator />}
-                <TicTacToe />
+                {true && <Calculator />}
+                {false && <TicTacToe />}
             </div>
         </div>
     );

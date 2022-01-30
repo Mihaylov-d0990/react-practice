@@ -28,47 +28,15 @@ export default function ToDoList() {
 
     }
 
-    const delIssue = (index) => {
+    // useCallback is used so that the function is not recreated when rerender
+    // useCallback используется для того чтобы при ререндере не пересоздавалась функция
+
+    const delIssue = React.useCallback((index) => {
 
         let arr = [...issues]
         arr.splice(index, 1)
         setIssues([...arr])
-
-    }
-
-    // This hook is triggered when mounting and unmounting the component.
-    // Этот хук срабатывает при монтировании  и размонтировании компонента.
-
-    React.useEffect(() => {
-        console.log("!ToDolist! => ToDolist has been mounted");
-        return (
-            () => { 
-                console.log("!ToDolist! => ToDoList has been unmounted");
-            }
-        )
-    }, [])
-
-    // This hook is triggered every time the state changes. States: issues, inputIssue and errorMessage.
-    // Этот хук срабатывает каждый раз, когда изменяется состояние. Состояния: issues, inputIssue и errorMessage.
-
-    React.useEffect(() => {
-        console.log("!ToDolist! => ToDoList has been updated");
-    })
-
-    // The following hooks are triggered when the corresponding states change.
-    // Следующие хуки срабатывают при изменении соответствующих состояний.
-
-    React.useEffect(() => {
-        console.log("!ToDolist! => issues has been changed")
     }, [issues])
-
-    React.useEffect(() => {
-        console.log("!ToDolist! => inputIssue has been changed")
-    }, [inputIssue])
-
-    React.useEffect(() => {
-        console.log("!ToDolist! => errorMessage has been changed")
-    }, [errorMessage])
  
     return (
         <div className='todolist'>

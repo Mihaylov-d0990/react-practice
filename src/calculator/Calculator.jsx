@@ -16,9 +16,12 @@ export default function Calculator() {
     
     const [operationResult, setOperationResult] = React.useState('')
 
-    const addSymbol = (symbol) => {
+    const expressionRef = React.useRef()
+    expressionRef.current = expression
+
+    const addSymbol = React.useCallback((symbol) => {
         const operators = new Set(["*", "/", "+", "-"])
-        let exp = expression
+        let exp = expressionRef.current
 
         if (operators.has(symbol)) {
 
@@ -46,16 +49,16 @@ export default function Calculator() {
         } else {
             setExpression(exp + symbol)
         }
-    }
+    }, [])
 
-    const deleteSymbol = () => {
-        let exp = expression.substring(0, expression.length - 1)
+    const deleteSymbol = React.useCallback(() => {
+        let exp = expressionRef.current.substring(0, expressionRef.current.length - 1)
         setExpression(exp)
-    }
+    }, [])
 
-    const clearExpression = () => {
+    const clearExpression = React.useCallback(() => {
         setExpression("")
-    }
+    }, [])
 
     const result = (fNum, sNum, op) => {
         let res

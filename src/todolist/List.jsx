@@ -3,10 +3,6 @@ import React from 'react'
 export default React.memo(
     function List({issues, delIssue}) {
 
-        React.useEffect(() => {
-            console.log("!List! => List has been updated")
-        })
-
         return(
             <ul className="list-non-styled padding-top-25">
                 {issues.map((issue, index) => (
