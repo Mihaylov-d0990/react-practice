@@ -2,7 +2,6 @@ import React from 'react'
 
 export default React.memo(
     function List({issues, delIssue}) {
-        console.log(issues);
         return(
             <ul className="list-non-styled padding-top-25">
                 {issues.map((issue) => (

@@ -21,6 +21,9 @@ export default function TicTacToe () {
     const turnRef = React.useRef()
     turnRef.current = turn
 
+    // Turn change function
+    // Фунция смены хода 
+
     const changeTurn = React.useCallback((index) => {
 
         let arr = fieldsRef.current
@@ -32,7 +35,9 @@ export default function TicTacToe () {
             outputArr[i] = obj
 
         }
-        
+
+        // Checks the empty field or not. If empty, then fills it depending on the turn
+        // Проверяет пустое поле или нет. Если пустое, то заполняет его в зависимости от хода
 
         if (outputArr[index].symbol !== "X" && outputArr[index].symbol !== "O"){
 
@@ -100,6 +105,9 @@ export default function TicTacToe () {
 
         let line = []
 
+        // Horizontal Win Check
+        // Проверка выигрыша по горизонтали
+
         for (let i = 0; i < 3; i++) {
 
             for (let j = i * 3; j < (i + 1) * 3; j++) {
@@ -117,6 +125,9 @@ export default function TicTacToe () {
             line = checkWinner(line)
         }
         
+        // Vertical Win Check
+        // Проверка выигрыша по вертикали
+
         for (let i = 0; i < 3; i++) {
             
             for (let j = i; j < 7 + i; j += 3){
@@ -132,6 +143,9 @@ export default function TicTacToe () {
 
             line = checkWinner(line)
         }
+
+        // Two diagonal checks
+        // Две проверки по диагонали
 
         for (let i = 0; i < 9; i += 4) {
 

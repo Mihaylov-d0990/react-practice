@@ -25,8 +25,14 @@ export default function Calculator() {
     
     const [operationResult, setOperationResult] = React.useState('')
 
+    // The expressionRef variable is used to pass an expression to the callback function
+    // Переменная expressionRef используется для передачи выражения в callback функцию
+
     const expressionRef = React.useRef()
     expressionRef.current = expression
+
+    // The function of adding a character to an expression
+    // Функция добавления символа в выражение
 
     const addSymbol = React.useCallback((symbol) => {
 
@@ -50,6 +56,7 @@ export default function Calculator() {
 
                     exp = exp.substring(0, exp.length - 1) 
                     setExpression(exp + symbol)
+
                 }
                 
             } else if (exp.length >= 1) {
@@ -63,6 +70,7 @@ export default function Calculator() {
             setExpression(exp + symbol)
 
         }
+
     }, [])
 
     const deleteSymbol = React.useCallback(() => {
@@ -105,12 +113,13 @@ export default function Calculator() {
         return res.toString()
 
     }
-
-    
  
     React.useEffect(() => {
 
         const operators = new Set(["*", "/", "+", "-"])
+
+        // Recursive function for calculating the result of an expression
+        // Рекурсивная функция для вычисления результата выражения
 
         const combine = (expArr) => {
             let arrLength = expArr.length
@@ -133,6 +142,10 @@ export default function Calculator() {
 
         let exp = expression.split('')        
         let expressionArray = []
+
+        // Writing an expression string variable to an array
+        // Запись строковой переменной выражения в массив
+
         exp.map((symbol) => {
 
             if (operators.has(symbol)) {
@@ -157,7 +170,9 @@ export default function Calculator() {
                     
                 }
             }
+
             return expressionArray
+
         })
 
         let ea = [...expressionArray]
@@ -165,8 +180,6 @@ export default function Calculator() {
         setOperationResult(expressionArray.length > expRes.length ? "=" + expRes : "")
 
     }, [expression])
-
-    
 
     return (
         <div className='calculator'>
