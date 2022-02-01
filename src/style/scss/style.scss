@@ -109,6 +109,44 @@ $border1px: 1px solid $borderColor;
     }
 }
 
+$chessBlack: rgb(0, 0, 0);
+$chessWhite: rgb(255, 255, 255);
+
+.chess {
+    display: grid;
+
+    .chess-board {
+        display: grid;
+        grid-template-columns: repeat(8, 50px);
+        grid-template-rows: repeat(8, 50px);
+        border: 1px solid black;
+        justify-self: center;
+
+        .chess-field {
+
+            $chessStep: 8;
+
+            @mixin fieldStyle {
+                background-color: $chessBlack;
+                color: $chessWhite;
+            }
+
+            @for $i from 0 through 3 {
+
+                &:nth-child(n + #{$chessStep * 2 * $i + 1}):nth-child(-n + #{$chessStep * ($i * 2 + 1)}):nth-child(even) {
+                    @include fieldStyle;
+                }
+                 
+                &:nth-child(n + #{$chessStep * ($i * 2 + 1)}):nth-child(-n + #{$chessStep * ($i * 2 + 2)}):nth-child(odd) {
+                    @include fieldStyle;
+                }
+
+            }
+
+        }
+    }
+}
+
 
 
 

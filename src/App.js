@@ -1,6 +1,7 @@
-import ToDoList from "./todolist/ToDoList";
-import Calculator from "./calculator/Calculator";
+import ToDoList from "./todolist/ToDoList"
+import Calculator from "./calculator/Calculator"
 import TicTacToe from "./tictactoe/TicTacToe"
+import Chess from "./chess/Chess"
 import './style/style.css' 
 
 
@@ -10,7 +11,8 @@ function App() {
             <div>
                 {false && <ToDoList />}
                 {false && <Calculator />}
-                {true && <TicTacToe />}
+                {false && <TicTacToe />}
+                {true && <Chess />}
             </div>
         </div>
     );
