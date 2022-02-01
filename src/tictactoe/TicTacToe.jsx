@@ -17,25 +17,35 @@ export default function TicTacToe () {
 
     const fieldsRef = React.useRef()
     fieldsRef.current = fields
+
     const turnRef = React.useRef()
     turnRef.current = turn
 
     const changeTurn = React.useCallback((index) => {
+
         let arr = fieldsRef.current
         let outputArr = []
+
         for (let i = 0; i < arr.length; i++) {
+
             let obj = Object.assign({}, arr[i])
             outputArr[i] = obj
+
         }
         
 
         if (outputArr[index].symbol !== "X" && outputArr[index].symbol !== "O"){
 
             if (turnRef.current) {
+
                 outputArr[index].symbol = "X"
+
             } else {
+
                 outputArr[index].symbol = "O"
+
             }
+
             setTurn(!turnRef.current)
             setFields(outputArr)
         }
@@ -43,14 +53,19 @@ export default function TicTacToe () {
     }, [])
 
     const startMatch = () => {
+
         let start = true
 
         fields.map((field) => {
+
             if (field.symbol !== " ") {
                 start = false
             }
+
             return 0
+
         })
+
         if (!turn) setTurn(() => (!turn))
         setDisableButton(() => (!start))
     }
@@ -74,8 +89,10 @@ export default function TicTacToe () {
         const checkWinner = (lineCheck) => {
 
             if (lineCheck.length === 3 && !disableButton) {
+
                 setWinner(!turn ? "X won" : "O won")
                 setDisableButton(() => (!disableButton)) 
+
             }
 
             return []
@@ -84,6 +101,7 @@ export default function TicTacToe () {
         let line = []
 
         for (let i = 0; i < 3; i++) {
+
             for (let j = i * 3; j < (i + 1) * 3; j++) {
 
                 if (j === i * 3 && fields[j].symbol !== " ") {
@@ -100,6 +118,7 @@ export default function TicTacToe () {
         }
         
         for (let i = 0; i < 3; i++) {
+            
             for (let j = i; j < 7 + i; j += 3){
 
                 if (j === 0 + i && fields[j].symbol !== " ") {

@@ -4,12 +4,21 @@ import CalcButton from './CalcButton'
 export default function Calculator() {
 
     const buttons = React.useState(() => {
+
         let arr = []
+
         for (let i = 1; i < 10; i++){
-            arr[i-1] = i.toString()
+            arr[i-1] = {id: i - 1, name: i.toString()}
         }
-        arr = [...arr, ...["0", "+", "-", "*", "/"]]
+
+        arr = [...arr, ...[{id:9 , name: "0"},
+            {id:10 , name: "+"},
+            {id:11 , name: "-"},
+            {id:12 , name: "*"},
+            {id:13 , name: "/"}]]
+
         return arr
+
     })[0]
 
     const [expression, setExpression] = React.useState('')
@@ -20,6 +29,7 @@ export default function Calculator() {
     expressionRef.current = expression
 
     const addSymbol = React.useCallback((symbol) => {
+
         const operators = new Set(["*", "/", "+", "-"])
         let exp = expressionRef.current
 
@@ -43,24 +53,33 @@ export default function Calculator() {
                 }
                 
             } else if (exp.length >= 1) {
+
                 setExpression(exp + symbol)
+
             }
             
         } else {
+
             setExpression(exp + symbol)
+
         }
     }, [])
 
     const deleteSymbol = React.useCallback(() => {
+
         let exp = expressionRef.current.substring(0, expressionRef.current.length - 1)
         setExpression(exp)
+
     }, [])
 
     const clearExpression = React.useCallback(() => {
+
         setExpression("")
+
     }, [])
 
     const result = (fNum, sNum, op) => {
+
         let res
         let f = Number(fNum)
         let s = Number(sNum)
@@ -82,7 +101,9 @@ export default function Calculator() {
                 res = ""
             break;
         }
+
         return res.toString()
+
     }
 
     
@@ -121,8 +142,11 @@ export default function Calculator() {
             } else {
 
                 let arrayLength = expressionArray.length
+                
                 if ((arrayLength !== 0 && !operators.has(expressionArray[arrayLength - 1])) ||
+
                     (arrayLength === 1 && !(new Set("*", "/", "+", "-")).has(expressionArray[arrayLength - 1]))
+
                 ) {
 
                     expressionArray[arrayLength - 1] = expressionArray[arrayLength - 1] + symbol
@@ -150,11 +174,11 @@ export default function Calculator() {
                 <p>{expression + operationResult}</p>
             </div>
             <div className='calc-buttons'>
-                {buttons.map((name, index) => (
-                    <CalcButton name={name} key={index} btnFunc={addSymbol}/>
+                {buttons.map((button) => (
+                    <CalcButton name={button.name} key={button.id} btnFunc={addSymbol}/>
                 ))}
-                <CalcButton name={"←"} key={"55"} btnFunc={deleteSymbol}/>
-                <CalcButton name={"C"} key={"66"} btnFunc={clearExpression}/>
+                <CalcButton name={"←"} key={14} btnFunc={deleteSymbol}/>
+                <CalcButton name={"C"} key={15} btnFunc={clearExpression}/>
             </div>
         </div>
     )

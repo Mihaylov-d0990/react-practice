@@ -2,16 +2,16 @@ import React from 'react'
 
 export default React.memo(
     function List({issues, delIssue}) {
-
+        console.log(issues);
         return(
             <ul className="list-non-styled padding-top-25">
-                {issues.map((issue, index) => (
-                    <li key={index}>
+                {issues.map((issue) => (
+                    <li key={issue.id}>
                         <div>
-                            <p>{issue}</p>
+                            <p>{issue.name}</p>
                         </div>
                         <div>
-                            <input type="button" value="Delete issue" onClick={() => (delIssue(index))}/>
+                            <input type="button" value="Delete issue" onClick={() => (delIssue(issue.id))}/>
                         </div>
                     </li>
                 ))}
