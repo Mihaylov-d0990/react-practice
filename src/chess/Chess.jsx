@@ -1,35 +1,39 @@
 import React from 'react'
 import Field from './Field'
+import ContextFields from './ContextFields'
+import pawnMove from './ChessMoves'
 
 class Figure {
-    constructor(id, color, img, weight) {
-        this.id = id
+    constructor(color, img, weight, moveFunc) {
         this.color = color
         this.img = img
         this.weight = weight 
+        this.moveFunc = moveFunc
+    }
+
+    move(color, pos, fields) {
+        return this.moveFunc(color, pos, fields)
     }
 }
 
 export default function Chess () {
 
-    
-
     const blackFigures = React.useState(() => {
         let firstArr = []
 
         for (let i = 0; i < 8; i++) {
-            firstArr[i] = new Figure(i, false, "/image/b-1.png", 1)
+            firstArr[i] = new Figure(false, "/image/b-1.png", 1, pawnMove)
         }
 
         let secondArr = [            
-            new Figure(9, false, "/image/b-2.png", 2),           
-            new Figure(11, false, "/image/b-4.png", 3),  
-            new Figure(13, false, "/image/b-3.png", 4),
-            new Figure(15, false, "/image/b-6.png", 6),
-            new Figure(14, false, "/image/b-5.png", 5),          
-            new Figure(10, false, "/image/b-4.png", 3),
-            new Figure(12, false, "/image/b-3.png", 4),
-            new Figure(8, false, "/image/b-2.png", 2),
+            new Figure(false, "/image/b-2.png", 2, pawnMove),           
+            new Figure(false, "/image/b-4.png", 3, pawnMove),  
+            new Figure(false, "/image/b-3.png", 4, pawnMove),
+            new Figure(false, "/image/b-6.png", 6, pawnMove),
+            new Figure(false, "/image/b-5.png", 5, pawnMove),          
+            new Figure(false, "/image/b-4.png", 3, pawnMove),
+            new Figure(false, "/image/b-3.png", 4, pawnMove),
+            new Figure(false, "/image/b-2.png", 2, pawnMove),
         ]
         
         return [...firstArr, ...secondArr]
@@ -40,18 +44,18 @@ export default function Chess () {
         let firstArr = []
 
         for (let i = 0; i < 8; i++) {
-            firstArr[i] = new Figure(i, true, "/image/w-1.png", 1)
+            firstArr[i] = new Figure(true, "/image/w-1.png", 1, pawnMove)
         }
 
         let secondArr = [
-            new Figure(8, true, "/image/w-4.png", 2),
-            new Figure(9, true, "/image/w-4.png", 2),
-            new Figure(10, true, "/image/w-2.png", 3),
-            new Figure(11, true, "/image/w-2.png", 3),
-            new Figure(12, true, "/image/w-3.png", 4),
-            new Figure(13, true, "/image/w-3.png", 4),
-            new Figure(14, true, "/image/w-5.png", 5),
-            new Figure(15, true, "/image/w-6.png", 6)
+            new Figure(true, "/image/w-4.png", 2, pawnMove),          
+            new Figure(true, "/image/w-2.png", 3, pawnMove),    
+            new Figure(true, "/image/w-3.png", 4, pawnMove),
+            new Figure(true, "/image/w-5.png", 5, pawnMove),
+            new Figure(true, "/image/w-6.png", 6, pawnMove),
+            new Figure(true, "/image/w-3.png", 4, pawnMove),
+            new Figure(true, "/image/w-2.png", 3, pawnMove),
+            new Figure(true, "/image/w-4.png", 2, pawnMove),
         ]
         
         return [...firstArr, ...secondArr]
@@ -76,23 +80,63 @@ export default function Chess () {
         return [...arr]
 
     })
-   
-    
-    React.useEffect(() => {
 
-        return () => {
+    const [clicks, setClicks] = React.useState([])
+    const [turn, setTurn] = React.useState(true)
+    const [fieldsCanMove, setFieldsCanMove] = React.useState([])
 
+    const moveChessPiece = (field) => {
+        let arr = [...clicks]
+
+        arr = arr.length === 2 ? [] : arr
+
+        if (arr.length === 0 && field.figure && field.figure.color === turn) {
+            arr = [field.id]
+            setFieldsCanMove(field.figure.move(turn, field.id, fields))
+        } else if (arr.length === 1 && (new Set(fieldsCanMove)).has(field.id)) {
+            if (!field.figure) {
+                arr = [...arr, field.id]
+            } else if(field.figure.color !== turn) {
+                arr = [...arr, field.id]
+            }
+            
+        } else {
+            arr = []
+            setFieldsCanMove([])
         }
-    })
+        
+        
+        if (arr.length === 2) {
+            setFieldsCanMove([])
+            setTurn((turn) => (!turn))
+        } 
+        setClicks([...arr])
+        
+    }
 
+    React.useEffect(() => {
+        if (clicks.length === 2) {
+            let firstClick = clicks[0]
+            let secondClick = clicks[1]
+            let arr = [...fields]
+            if (arr[firstClick]) {
+                arr[secondClick].figure = arr[firstClick].figure
+                arr[firstClick].figure = null
+                setFields([...arr])
+            }
+        }
+    }, [clicks])
+   
     return (
         <div className='chess'>
             <div className='chess-board'>
-                {  
-                    fields.map((field) => (
-                        <Field key={field.id} figure={field.figure}/>
-                    ))
-                }   
+                <ContextFields.Provider value={[clicks, moveChessPiece, fieldsCanMove]}>
+                    {  
+                        fields.map((field) => (
+                            <Field key={field.id} field={field}/>
+                        ))
+                    }
+                </ContextFields.Provider>   
             </div>
         </div>
     )

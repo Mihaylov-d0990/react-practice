@@ -68,32 +68,26 @@
     grid-template-rows: repeat(8, 50px);
     border: 1px solid black;
     justify-self: center; }
+    .chess .chess-board .move-color-style {
+      background-color: #60ffcf; }
+    .chess .chess-board .static-color-style:nth-child(n + 1):nth-child(-n + 8):nth-child(even) {
+      background-color: #535353; }
+    .chess .chess-board .static-color-style:nth-child(n + 8):nth-child(-n + 16):nth-child(odd) {
+      background-color: #535353; }
+    .chess .chess-board .static-color-style:nth-child(n + 17):nth-child(-n + 24):nth-child(even) {
+      background-color: #535353; }
+    .chess .chess-board .static-color-style:nth-child(n + 24):nth-child(-n + 32):nth-child(odd) {
+      background-color: #535353; }
+    .chess .chess-board .static-color-style:nth-child(n + 33):nth-child(-n + 40):nth-child(even) {
+      background-color: #535353; }
+    .chess .chess-board .static-color-style:nth-child(n + 40):nth-child(-n + 48):nth-child(odd) {
+      background-color: #535353; }
+    .chess .chess-board .static-color-style:nth-child(n + 49):nth-child(-n + 56):nth-child(even) {
+      background-color: #535353; }
+    .chess .chess-board .static-color-style:nth-child(n + 56):nth-child(-n + 64):nth-child(odd) {
+      background-color: #535353; }
     .chess .chess-board .chess-field {
       border-radius: 5px; }
-      .chess .chess-board .chess-field:nth-child(n + 1):nth-child(-n + 8):nth-child(even) {
-        background-color: #535353;
-        color: white; }
-      .chess .chess-board .chess-field:nth-child(n + 8):nth-child(-n + 16):nth-child(odd) {
-        background-color: #535353;
-        color: white; }
-      .chess .chess-board .chess-field:nth-child(n + 17):nth-child(-n + 24):nth-child(even) {
-        background-color: #535353;
-        color: white; }
-      .chess .chess-board .chess-field:nth-child(n + 24):nth-child(-n + 32):nth-child(odd) {
-        background-color: #535353;
-        color: white; }
-      .chess .chess-board .chess-field:nth-child(n + 33):nth-child(-n + 40):nth-child(even) {
-        background-color: #535353;
-        color: white; }
-      .chess .chess-board .chess-field:nth-child(n + 40):nth-child(-n + 48):nth-child(odd) {
-        background-color: #535353;
-        color: white; }
-      .chess .chess-board .chess-field:nth-child(n + 49):nth-child(-n + 56):nth-child(even) {
-        background-color: #535353;
-        color: white; }
-      .chess .chess-board .chess-field:nth-child(n + 56):nth-child(-n + 64):nth-child(odd) {
-        background-color: #535353;
-        color: white; }
       .chess .chess-board .chess-field .pre-figure-block {
         width: 100%;
         height: 100%;
