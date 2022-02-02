@@ -1,9 +1,14 @@
+import React from 'react'
 
-export default function ChessPiece({figureSrc}) {
+export default function ChessPiece({figure}) {
+
+    const hello = () => {
+        console.log(figure.id);
+    }
 
     return (
         <div className="pre-figure-block">
-            <img className="figure-block" alt="" src={figureSrc}/>
+            <img onClick={() => (hello())} className="figure-block" alt="" src={figure.img}/>
         </div>
     )
 }

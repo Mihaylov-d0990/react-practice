@@ -88,11 +88,11 @@ export default function Chess () {
     return (
         <div className='chess'>
             <div className='chess-board'>
-                {
+                {  
                     fields.map((field) => (
                         <Field key={field.id} figure={field.figure}/>
                     ))
-                }
+                }   
             </div>
         </div>
     )
