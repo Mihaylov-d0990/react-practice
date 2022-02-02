@@ -1,7 +1,7 @@
 import React from 'react'
 import Field from './Field'
 import ContextFields from './ContextFields'
-import pawnMove from './ChessMoves'
+import {pawnMove, bishopMove, rookMove} from './ChessMoves.js'
 
 class Figure {
     constructor(color, img, weight, moveFunc) {
@@ -26,14 +26,14 @@ export default function Chess () {
         }
 
         let secondArr = [            
-            new Figure(false, "/image/b-2.png", 2, pawnMove),           
+            new Figure(false, "/image/b-2.png", 2, rookMove),          
             new Figure(false, "/image/b-4.png", 3, pawnMove),  
-            new Figure(false, "/image/b-3.png", 4, pawnMove),
+            new Figure(false, "/image/b-3.png", 4, bishopMove),  
             new Figure(false, "/image/b-6.png", 6, pawnMove),
-            new Figure(false, "/image/b-5.png", 5, pawnMove),          
+            new Figure(false, "/image/b-5.png", 5, pawnMove), 
+            new Figure(false, "/image/b-3.png", 4, bishopMove),         
             new Figure(false, "/image/b-4.png", 3, pawnMove),
-            new Figure(false, "/image/b-3.png", 4, pawnMove),
-            new Figure(false, "/image/b-2.png", 2, pawnMove),
+            new Figure(false, "/image/b-2.png", 2, rookMove),
         ]
         
         return [...firstArr, ...secondArr]
@@ -48,14 +48,14 @@ export default function Chess () {
         }
 
         let secondArr = [
-            new Figure(true, "/image/w-4.png", 2, pawnMove),          
+            new Figure(true, "/image/w-4.png", 2, rookMove),          
             new Figure(true, "/image/w-2.png", 3, pawnMove),    
-            new Figure(true, "/image/w-3.png", 4, pawnMove),
+            new Figure(true, "/image/w-3.png", 4, bishopMove),
             new Figure(true, "/image/w-5.png", 5, pawnMove),
             new Figure(true, "/image/w-6.png", 6, pawnMove),
-            new Figure(true, "/image/w-3.png", 4, pawnMove),
+            new Figure(true, "/image/w-3.png", 4, bishopMove),
             new Figure(true, "/image/w-2.png", 3, pawnMove),
-            new Figure(true, "/image/w-4.png", 2, pawnMove),
+            new Figure(true, "/image/w-4.png", 2, rookMove),
         ]
         
         return [...firstArr, ...secondArr]

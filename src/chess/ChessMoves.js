@@ -1,4 +1,4 @@
-export default function pawnMove(color, pos, fields) {
+function pawnMove(color, pos, fields) {
     let arr = []
     let fellRight 
     let fellLeft 
@@ -98,3 +98,309 @@ export default function pawnMove(color, pos, fields) {
 
     return [...arr]
 }
+
+function bishopMove(color, pos, fields) {
+    let arr = []
+
+    if (color) {
+
+        for (let i = pos; i > 0; i -= 7) {
+            arr.push(fields[i].id)
+            if ((i - 7) % 8 === 0) {
+                
+                break
+            } else if (i - 7 >= 0) {
+                if(fields[i - 7].figure) {
+                    if (fields[i - 7].figure.color){
+                        break
+                    } else if (!fields[i - 7].figure.color) {
+                        arr.push(fields[i - 7].id)
+                        break
+                    }
+                } 
+            }    
+        }
+
+        for (let i = pos; i < 64; i += 7) {
+            arr.push(fields[i].id)
+            if (i % 8 === 0) {
+                break
+            } else if (i + 7 < 64) {
+                if(fields[i + 7].figure) {
+                    if (fields[i + 7].figure.color){
+                        break
+                    } else if (!fields[i + 7].figure.color) {
+                        arr.push(fields[i + 7].id)
+                        break
+                    }
+                } 
+            }    
+        }
+
+        for (let i = pos; i > 0; i -= 9) {
+            arr.push(fields[i].id)
+            if (i % 8 === 0) {
+                
+                break
+            } else if (i - 9 >= 0) {
+                if(fields[i - 9].figure) {
+                    if (fields[i - 9].figure.color){
+                        break
+                    } else if(!fields[i - 9].figure.color) {
+                        arr.push(fields[i - 9].id)
+                        break
+                    }
+                }  
+            }   
+        }
+
+        for (let i = pos; i < 64; i += 9) {
+            arr.push(fields[i].id)
+            if ((i - 7) % 8 === 0) {
+                break
+            } else if (i + 9 < 64) {
+                if(fields[i + 9].figure) {
+                    if (fields[i + 9].figure.color){
+                        break
+                    } else if (!fields[i + 9].figure.color) {
+                        arr.push(fields[i + 9].id)
+                        break
+                    }
+                } 
+            }    
+        }
+
+    } else {
+
+        for (let i = pos; i > 0; i -= 7) {
+            arr.push(fields[i].id)
+            if ((i - 7) % 8 === 0) {
+                
+                break
+            } else if (i - 7 >= 0) {
+                if(fields[i - 7].figure) {
+                    if (!fields[i - 7].figure.color){
+                        break
+                    } else if (fields[i - 7].figure.color) {
+                        arr.push(fields[i - 7].id)
+                        break
+                    }
+                } 
+            }    
+        }
+
+        for (let i = pos; i < 64; i += 7) {
+            arr.push(fields[i].id)
+            if (i % 8 === 0) {
+                break
+            } else if (i + 7 < 64) {
+                if(fields[i + 7].figure) {
+                    if (!fields[i + 7].figure.color){
+                        break
+                    } else if (fields[i + 7].figure.color) {
+                        arr.push(fields[i + 7].id)
+                        break
+                    }
+                } 
+            }    
+        }
+
+        for (let i = pos; i > 0; i -= 9) {
+            arr.push(fields[i].id)
+            if (i % 8 === 0) {
+                
+                break
+            } else if (i - 9 >= 0) {
+                console.log(i - 9);
+                if(fields[i - 9].figure) {
+                    if (!fields[i - 9].figure.color){
+                        break
+                    } else if(fields[i - 9].figure.color) {
+                        arr.push(fields[i - 9].id)
+                        break
+                    }
+                }  
+            }   
+        }
+
+        for (let i = pos; i < 64; i += 9) {
+            arr.push(fields[i].id)
+            if ((i - 7) % 8 === 0) {
+                break
+            } else if (i + 9 < 64) {
+                if(fields[i + 9].figure) {
+                    if (!fields[i + 9].figure.color){
+                        break
+                    } else if (fields[i + 9].figure.color) {
+                        arr.push(fields[i + 9].id)
+                        break
+                    }
+                } 
+            }    
+        }
+
+    }
+
+    return [...arr]
+}
+
+function rookMove(color, pos, fields) {
+    let arr = []
+
+    if (color) {
+
+        for (let i = pos; i >= 0; i -= 8) {
+            arr.push(fields[i].id) 
+            if (i - 8 < 0) {
+                break
+            } else {
+                if (fields[i - 8].figure) {
+                    if (fields[i - 8].figure.color){
+                        break
+                    } else if (!fields[i - 8].figure.color) {
+                        arr.push(fields[i - 8].id)
+                        break
+                    }
+                }
+            }
+        }
+
+        for (let i = pos; i < 64; i += 8) {
+            arr.push(fields[i].id) 
+            if (i + 8 >= 64) {
+                break
+            } else {
+                if (fields[i + 8].figure) {
+                    if (fields[i + 8].figure.color){
+                        break
+                    } else if (!fields[i + 8].figure.color) {
+                        arr.push(fields[i + 8].id)
+                        break
+                    }
+                }
+            }
+        }
+
+        for (let i = pos; (i - 7) % 8 !== 0; i++) {
+            arr.push(fields[i].id) 
+            if ((i - 7) % 8 === 0) {
+                break
+            } else {
+                if (fields[i + 1].figure) {
+                    if (fields[i + 1].figure.color){
+                        break
+                    } else if (!fields[i + 1].figure.color) {
+                        arr.push(fields[i + 1].id)
+                        break
+                    }
+                }
+            }
+
+            if ((i + 1 - 7) % 8 === 0) {
+                arr.push(fields[i + 1].id)
+            }
+        }
+
+        for (let i = pos; i % 8 !== 0; i--) {
+            arr.push(fields[i].id) 
+            if (i % 8 === 0) {
+                break
+            } else {
+                if (fields[i - 1].figure) {
+                    if (fields[i - 1].figure.color){
+                        break
+                    } else if (!fields[i - 1].figure.color) {
+                        arr.push(fields[i - 1].id)
+                        break
+                    }
+                }
+            }
+
+            if ((i - 1) % 8 === 0) {
+                arr.push(fields[i - 1].id)
+            }
+        }
+
+    } else {
+        for (let i = pos; i >= 0; i -= 8) {
+            arr.push(fields[i].id) 
+            if (i - 8 < 0) {
+                break
+            } else {
+                if (fields[i - 8].figure) {
+                    if (!fields[i - 8].figure.color){
+                        break
+                    } else if (fields[i - 8].figure.color) {
+                        arr.push(fields[i - 8].id)
+                        break
+                    }
+                }
+            }
+        }
+
+        for (let i = pos; i < 64; i += 8) {
+            arr.push(fields[i].id) 
+            if (i + 8 > 64) {
+                break
+            } else {
+                if (fields[i + 8].figure) {
+                    if (!fields[i + 8].figure.color){
+                        break
+                    } else if (fields[i + 8].figure.color) {
+                        arr.push(fields[i + 8].id)
+                        break
+                    }
+                }
+            }
+        }
+
+        for (let i = pos; (i - 7) % 8 !== 0; i++) {
+            arr.push(fields[i].id) 
+            if ((i - 7) % 8 === 0) {
+                break
+            } else {
+                if (fields[i + 1].figure) {
+                    if (!fields[i + 1].figure.color){
+                        break
+                    } else if (fields[i + 1].figure.color) {
+                        arr.push(fields[i + 1].id)
+                        break
+                    }
+                }
+            }
+
+            if ((i + 1 - 7) % 8 === 0) {
+                arr.push(fields[i + 1].id)
+            }
+        }
+
+        for (let i = pos; i % 8 !== 0; i--) {
+            arr.push(fields[i].id) 
+            if (i % 8 === 0) {
+                break
+            } else {
+                if (fields[i - 1].figure) {
+                    if (!fields[i - 1].figure.color){
+                        break
+                    } else if (fields[i - 1].figure.color) {
+                        arr.push(fields[i - 1].id)
+                        break
+                    }
+                }
+            }
+
+            if ((i - 1) % 8 === 0) {
+                arr.push(fields[i - 1].id)
+            }
+        }
+
+    }
+
+    return [...arr]
+}
+
+export  {pawnMove, bishopMove, rookMove}
+
+
+
+
